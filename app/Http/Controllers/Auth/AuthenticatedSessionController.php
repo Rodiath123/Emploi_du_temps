@@ -26,19 +26,22 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
      $request->authenticate();
+
     $request->session()->regenerate();
 
-    // Redirection personnalisée selon le rôle
+    // --- LOGIQUE DE REDIRECTION PERSONNALISÉE ---
     $user = $request->user();
 
     if ($user->role_id == 1) { // Admin
-        return redirect()->intended('/admin/dashboard');
-    } elseif ($user->role_id == 2) { // Enseignant
-        return redirect()->intended('/teacher/dashboard');
+        return redirect()->route('admin.dashboard');
+    } 
+    
+    if ($user->role_id == 2) { // Enseignant
+        return redirect()->route('teacher.dashboard');
     }
 
-    // Par défaut pour les étudiants
-    return redirect()->intended(RouteServiceProvider::HOME);   
+    // Par défaut pour les Étudiants (role_id 3 ou autre)
+    return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**
