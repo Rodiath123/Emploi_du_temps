@@ -16,7 +16,6 @@ return new class extends Migration
         $table->string('name'); // Administrateur, Enseignant, Etudiant
         $table->string('slug')->unique(); // admin, teacher, student
         $table->timestamps();
-        $table->foreignId('role_id')->constrained('roles');
     });
 }
 
