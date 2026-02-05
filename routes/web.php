@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+use App\Http\Controllers\Academic\ReferentialController;
+
+Route::prefix('admin/referential')->group(function () {
+    Route::get('/', [ReferentialController::class, 'index'])->name('referential.index');
+    Route::post('/rooms', [ReferentialController::class, 'storeRoom'])->name('referential.rooms.store');
+    Route::post('/subjects', [ReferentialController::class, 'storeSubject'])->name('referential.subjects.store');
+    Route::post('/classes', [ReferentialController::class, 'storeClass'])->name('referential.classes.store');
+    
+    Route::delete('/rooms/{id}', [ReferentialController::class, 'destroyRoom'])->name('referential.rooms.destroy');
+    Route::delete('/subjects/{id}', [ReferentialController::class, 'destroySubject'])->name('referential.subjects.destroy');
+    Route::delete('/classes/{id}', [ReferentialController::class, 'destroyClass'])->name('referential.classes.destroy');
+});
