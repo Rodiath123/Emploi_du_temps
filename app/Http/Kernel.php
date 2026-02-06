@@ -21,6 +21,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        // CORRECTION : On ne le met plus ici car l'utilisateur n'est pas encore chargé
     ];
 
     /**
@@ -36,6 +37,9 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            
+            // AJOUT ICI : Le middleware s'exécute APRES que la session soit démarrée
+            \App\Http\Middleware\CheckPasswordChange::class,
         ],
 
         'api' => [

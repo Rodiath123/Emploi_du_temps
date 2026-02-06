@@ -28,6 +28,10 @@
                         <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
                             {{ __('Utilisateurs') }}
                         </x-nav-link>
+
+                        <x-nav-link :href="route('referential.index')" :active="request()->routeIs('referential.*')">
+                            {{ __('Référentiel') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>
@@ -82,6 +86,10 @@
             @if($role === 'admin')
                 <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
                     {{ __('Utilisateurs') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('referential.index')" :active="request()->routeIs('referential.*')">
+                    {{ __('Référentiel') }}
                 </x-responsive-nav-link>
             @endif
         </div>
