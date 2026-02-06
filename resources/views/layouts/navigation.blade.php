@@ -1,9 +1,13 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     @php
-        // Définition de la route dynamique selon le rôle
-        $dashboardRoute = 'dashboard'; 
-        if (Auth::user()->role_id == 1) $dashboardRoute = 'admin.dashboard';
-        if (Auth::user()->role_id == 2) $dashboardRoute = 'teacher.dashboard';
+        $role = Auth::user()->role;
+        $dashboardRoute = 'dashboard'; // Par défaut pour student
+
+        if ($role === 'admin') {
+            $dashboardRoute = 'admin.dashboard';
+        } elseif ($role === 'teacher') {
+            $dashboardRoute = 'teacher.dashboard';
+        }
     @endphp
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,6 +23,12 @@
                     <x-nav-link :href="route($dashboardRoute)" :active="request()->routeIs($dashboardRoute)">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                    @if($role === 'admin')
+                        <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
+                            {{ __('Utilisateurs') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -68,6 +78,12 @@
             <x-responsive-nav-link :href="route($dashboardRoute)" :active="request()->routeIs($dashboardRoute)">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+            @if($role === 'admin')
+                <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
+                    {{ __('Utilisateurs') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <div class="pt-4 pb-1 border-t border-gray-200">

@@ -38,15 +38,18 @@ class RegisteredUserController extends Controller
 
         $user = User::create([
             'name' => $request->name,
-    'email' => $request->email,
-    'password' => Hash::make($request->password),
-    'role_id' => 3, // Définit "Étudiant" par défaut
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            // MODIFICATION ICI : On utilise 'role' et on met 'student' en texte
+            'role' => 'student', 
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
+        // Cette ligne redirigera l'utilisateur vers la route HOME 
+        // (qui passera par ton middleware de redirection automatique)
         return redirect(RouteServiceProvider::HOME);
     }
 }

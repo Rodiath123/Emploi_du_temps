@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            // On ajoute la colonne rôle avec 'student' (étudiant) par défaut
+            $table->string('role')->default('student'); 
             $table->rememberToken();
             $table->timestamps();
         });
