@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Académique</title>
+    <title>Enploi du Temps</title>
     <!-- CSS : Bootstrap & Google Fonts & FontAwesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -26,7 +26,7 @@
     <!-- Header Section -->
     <div class="header-section shadow">
         <div class="container text-center">
-            <h1 class="fw-bold"><i class="fas fa-university me-2"></i> Configuration du Référentiel</h1>
+            <h1 class="fw-bold"><i class="fas fa-university me-2"></i> ESGIS | Emploi du temps</h1>
             <p class="opacity-75">Gérez les structures fondamentales de votre établissement en un clic.</p>
         </div>
     </div>
