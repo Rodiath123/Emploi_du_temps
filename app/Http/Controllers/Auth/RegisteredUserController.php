@@ -40,7 +40,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            // MODIFICATION ICI : On utilise 'role' et on met 'student' en texte
+            // ON GARDE TA MODIF : Indispensable pour tes redirections futures
             'role' => 'student', 
         ]);
 
@@ -48,8 +48,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        // Cette ligne redirigera l'utilisateur vers la route HOME 
-        // (qui passera par ton middleware de redirection automatique)
+        // On redirige vers HOME (ton middleware fera le reste)
         return redirect(RouteServiceProvider::HOME);
     }
 }

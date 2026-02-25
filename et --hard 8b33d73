@@ -1,0 +1,17 @@
+[33m60de668[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/module-authentification[m[33m, [m[1;31morigin/feature/module-authentification[m[33m)[m HEAD@{0}: commit (merge): Fix: Fusion réussie de la sécurité et du référentiel
+[33m7dc82d7[m HEAD@{1}: checkout: moving from feature/module-authentification to feature/module-authentification
+[33m7dc82d7[m HEAD@{2}: commit: Correction : Changement de mot de passe obligatoire fonctionnel et redirection sécurisée
+[33mce44ee7[m HEAD@{3}: pull origin module_referentiel: Merge made by the 'ort' strategy.
+[33m8b33d73[m HEAD@{4}: commit (merge): Merge: Intégration réussie du module authentification et référentiel
+[33m5bda432[m HEAD@{5}: commit: Fix: système de rôles et redirections terminé
+[33mf00c426[m HEAD@{6}: commit: Finalisation totale authentification : Logo ESGIS, menu dynamique et redirections par rôles
+[33md9ecd4f[m HEAD@{7}: commit: Correction erreur de syntaxe et finalisation traductions
+[33m6bb5727[m HEAD@{8}: commit: Finalisation redirection par rôles et sécurité Middleware
+[33mf02cd17[m HEAD@{9}: commit: Ajout des routes et vues spécifiques pour Admin et Enseignant
+[33mb094173[m HEAD@{10}: commit: Attribution automatique du rôle étudiant lors de l'inscription
+[33mf576fca[m HEAD@{11}: commit: Succès du Seeding : rôles Administration, Enseignant et Étudiant créés
+[33m05814bd[m HEAD@{12}: commit: Installation réussie de l'authentification et de la table roles
+[33md3484d6[m HEAD@{13}: commit: Structure de base : création de la table roles et lien avec users
+[33m6ec5484[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{14}: checkout: moving from main to feature/module-authentification
+[33m6ec5484[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{15}: checkout: moving from main to main
+[33m6ec5484[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{16}: clone: from https://github.com/Rodiath123/Emploi_du_temps.git

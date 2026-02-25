@@ -1,4 +1,4 @@
-<section>
+<section class="space-y-6">
     <header>
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Update Password') }}
@@ -9,12 +9,13 @@
         </p>
     </header>
 
-@if (auth()->user()->must_change_password)
-    <div class="mt-4 p-4 bg-orange-100 border-l-4 border-orange-500 text-orange-700 shadow-sm rounded">
-        <p class="font-bold italic">Première connexion</p>
-        <p>Par mesure de sécurité, vous devez modifier le mot de passe provisoire donné par l'administration avant de pouvoir accéder à votre espace élève. <br> Le mot de passe est: password123.</p>
-    </div>
-@endif
+    @if (auth()->user()->must_change_password)
+        <div class="mt-4 p-4 bg-orange-100 border-l-4 border-orange-500 text-orange-700 shadow-sm rounded">
+            <p class="font-bold italic">Première connexion</p>
+            <p>Par mesure de sécurité, vous devez modifier le mot de passe provisoire donné par l'administration avant de pouvoir accéder à votre espace élève. <br> Le mot de passe est: password123.</p>
+        </div>
+    @endif
+
     <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('put')

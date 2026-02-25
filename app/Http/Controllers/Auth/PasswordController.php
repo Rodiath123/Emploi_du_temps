@@ -10,6 +10,9 @@ use Illuminate\Validation\Rules\Password;
 
 class PasswordController extends Controller
 {
+    /**
+     * Update the user's password.
+     */
     public function update(Request $request): RedirectResponse
     {
         $validated = $request->validateWithBag('updatePassword', [
@@ -17,7 +20,7 @@ class PasswordController extends Controller
             'password' => ['required', Password::defaults(), 'confirmed'],
         ]);
 
-        // Mise à jour du mot de passe ET passage du flag à 0 (false)
+        // ON GARDE TA LOGIQUE : Mise à jour du mot de passe ET passage du flag à 0 (false)
         $request->user()->update([
             'password' => Hash::make($validated['password']),
             'must_change_password' => false,
