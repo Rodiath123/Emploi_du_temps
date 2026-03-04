@@ -6,7 +6,7 @@ use App\Http\Controllers\Academic\ReferentialController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\CourseController; 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,15 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Accueil
-Route::get('/', function () {
-    return view('welcome');
-});
+    Route::get('/', [AuthenticatedSessionController::class, 'create'])
+                ->name('login');
 
 // --- DASHBOARDS & COURS ---
 Route::middleware(['auth', 'verified'])->group(function () {
     
     // Le Dashboard affiche maintenant le planning (version de ta collègue)
-    Route::get('/dashboard', [CourseController::class, 'index'])->name('dashboard');
+    Route::get('/emploi', [CourseController::class, 'index'])->name('dashboard.emploi');
 
     // Espace Administration (Tes routes)
     Route::get('/admin/dashboard', function () {
