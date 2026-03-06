@@ -18,22 +18,20 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
                 ->name('login');
 
 // --- DASHBOARDS & COURS ---
+// --- DASHBOARDS & ACCUEIL ---
 Route::middleware(['auth', 'verified'])->group(function () {
     
-    // Le Dashboard affiche maintenant le planning (version de ta collègue)
-    Route::get('/emploi', [CourseController::class, 'index'])->name('dashboard.emploi');
+    // ON FORCE L'UTILISATION DU FICHIER UNIQUE
+    Route::get('/dashboard', function () {
+        return view('dashboard'); 
+    })->name('dashboard');
 
-    // Espace Administration (Tes routes)
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    // On garde ces noms au cas où tes contrôleurs les utilisent
+    Route::view('/admin/home', 'dashboard')->name('admin.dashboard');
+    Route::view('/teacher/home', 'dashboard')->name('teacher.dashboard');
 
-    // Espace Enseignant (Tes routes)
-    Route::get('/teacher/dashboard', function () {
-        return view('teacher.dashboard');
-    })->name('teacher.dashboard');
+    Route::get('/mon-planning', [CourseController::class, 'index'])->name('dashboard.emploi');
 });
-
 // --- PROFIL & GESTION UTILISATEURS ---
 Route::middleware('auth')->group(function () {
     // Profil (Sécurité mdp incluse)

@@ -12,6 +12,7 @@ class UserController extends Controller
 {
     public function index()
     {
+        // On remet la récupération de TOUS les utilisateurs sans exception
         $users = User::all();
         return view('admin.users.index', compact('users'));
     }
@@ -31,20 +32,35 @@ class UserController extends Controller
         ]);
 
         User::create([
-    'name' => $request->name,
-    'email' => $request->email,
-    'password' => Hash::make($request->password), // Mot de passe par défaut (ex: Esgis2026)
-    'role' => $request->role,
-    'must_change_password' => true, // <--- On force le changement au prochain login
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role,
+            'must_change_password' => true, 
         ]);
 
-        return redirect()->route('admin.users.index')->with('success', 'Utilisateur créé avec succès.');
+        return redirect()->route('admin.users.index')
+            ->with('success', "L'utilisateur {$request->name} a été créé avec succès.");
+    }
+
+    public function updateRole(Request $request, User $user)
+    {
+        $request->validate([
+            'role' => 'required|in:admin,teacher,student',
+        ]);
+
+        $user->update(['role' => $request->role]);
+
+        return redirect()->back()
+            ->with('success', "Le rôle de {$user->name} a été mis à jour.");
     }
 
     public function destroy(User $user)
     {
+        // Sécurité minimale : on empêche quand même la suppression de soi-même 
+        // pour ne pas que tu te fasses "auto-expulser" par erreur.
         if (auth()->id() === $user->id) {
-            return redirect()->back()->with('error', 'Vous ne pouvez pas supprimer votre propre compte.');
+            return redirect()->back()->with('error', 'Action impossible sur votre propre compte.');
         }
 
         $user->delete();

@@ -36,7 +36,7 @@
                     </label>
                     <input 
                         type="text" 
-                        name="name" 
+                        name="nom" 
                         placeholder="Ex: Mathématiques, Physique, Informatique..."
                         class="w-full border-2 border-slate-300 rounded-lg p-4 text-slate-700 placeholder-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition duration-200 font-medium"
                         required

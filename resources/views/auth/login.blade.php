@@ -28,16 +28,22 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+        <div class="flex items-center justify-end mt-4 gap-4">
+    @if (Route::has('password.request'))
+        <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+            {{ __('Mot de passe oublié ?') }}
+        </a>
+    @endif
 
-            <x-primary-button class="ms-3">
-                {{ __('Connexion') }}
-            </x-primary-button>
-        </div>
+    <button type="button" 
+        onclick="window.location.href='{{ route('register') }}'"
+        class="inline-flex items-center px-4 py-2 bg-gray-100 border border-transparent rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest hover:bg-gray-200 active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+        {{ __('S\'inscrire') }}
+    </button>
+
+    <x-primary-button>
+        {{ __('Connexion') }}
+    </x-primary-button>
+</div>
     </form>
 </x-guest-layout>

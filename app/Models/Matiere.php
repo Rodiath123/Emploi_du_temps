@@ -9,7 +9,7 @@ class Matiere extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['name', 'code', 'libelle'];
+    protected $fillable = ['nom', 'code', 'libelle'];
 
     public function creneaux()
     {

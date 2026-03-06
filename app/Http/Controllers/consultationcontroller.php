@@ -23,7 +23,7 @@ class ConsultationController extends Controller
         foreach ($coursProgrammes as $cours) {
             $emploi[$cours->jour][$cours->horaire] = [
                 'matiere' => $cours->matiere->name,
-                'salle' => $cours->salle->nom,
+                'salle' => $cours->salle->name,
                 'code' => $cours->matiere->code
             ];
         }
@@ -37,20 +37,20 @@ class ConsultationController extends Controller
 
     // Enregistrement en base de données
     public function storeSalle(Request $request) {
-        Salle::create(['nom' => $request->nom, 'capacite' => $request->capacite]);
+        Salle::create(['name' => $request->name, 'capacite' => $request->capacite]);
         return redirect('/mon-emploi-du-temps');
     }
 
     public function storeMatiere(Request $request) {
         // Validation
         $request->validate([
-            'name' => 'required|string|max:255',
+            'nom' => 'required|string|max:255',
             'code' => 'required|string|max:20|unique:matieres,code',
         ]);
         
         // Création
         \App\Models\Matiere::create([
-            'name' => $request->name,
+            'nom' => $request->name,
             'libelle' => $request->name,
             'code' => $request->code,
         ]);

@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planning Hebdomadaire - Emploi du Temps</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-</head>
-<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen p-6">
 
-    <div class="max-w-7xl mx-auto">
+
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="max-w-7xl mx-auto">
         <!-- En-tête -->
         <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-2xl p-8 mb-8">
             <div class="flex justify-between items-center">
@@ -177,6 +178,7 @@
             <p>Système de Gestion d'Emploi du Temps - 2026</p>
         </div>
     </div>
-
-</body>
-</html>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
