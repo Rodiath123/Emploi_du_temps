@@ -35,7 +35,7 @@ class ChangeTrackingExample
     /**
      * Exemple 2: Récupérer l'historique d'un modèle
      */
-    public static function example2_getModelHistory(): void
+    public static function example2_getModelHistory()
     {
         $service = app(ChangeTrackingService::class);
         $user = User::find(1);
@@ -295,7 +295,7 @@ class ChangeTrackingExample
     /**
      * Exemple 14: Reporter les modifications sensibles
      */
-    public static function example14_sensitiveFIeldChanges(): void
+    public static function example14_sensitiveFieldChanges(): void
     {
         // Obtenir seulement les changements de champs non-sensibles
         $audits = Audit::excludeSensitive()->get();
